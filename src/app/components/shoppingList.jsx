@@ -10,6 +10,7 @@ export default function ShoppingList() {
 
 
     function addItemToList() {
+        if (item === "") return;
         setList(prevList => [
             ...prevList,
             {
@@ -20,7 +21,7 @@ export default function ShoppingList() {
         ]);
         setId(id + 1);
         setItem('');
-        setQty('')
+        setQty(1)
     };
 
     function removeItem(id) {
@@ -57,6 +58,7 @@ export default function ShoppingList() {
                                 ))}>+</button>
 
                             <p className='item-qty'>{item.quantity}</p>
+                            
                             <button className='item-subtract-qty-btn'
                                 onClick={() => {
                                     if (item.quantity <= 1) {
@@ -72,6 +74,7 @@ export default function ShoppingList() {
                                         ))
                                     }
                                 }}>-</button>
+
                         </div>
                         <button className='remove-item-btn' onClick={() => removeItem(item.id)}>X</button>
                     </div>
